@@ -82,8 +82,6 @@ export default function GameContainer({ username, highScore, setHighScore }) {
 
     if (correct) {
       setScore((prev) => ({ ...prev, correct: prev.correct + 1 }));
-      setShowConfetti(true);
-      setTimeout(() => setShowConfetti(false), 3000);
     } else {
       setScore((prev) => ({ ...prev, incorrect: prev.incorrect + 1 }));
     }
