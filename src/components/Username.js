@@ -1,18 +1,18 @@
 "use client";
 import { useState } from "react";
-import User from "../models/User";
+import User from "@/models/User";
 
 const Username = ({ username, setUsername }) => {
   const [error, setError] = useState("");
 
   const validateUser = async () => {
-    const saved_user = await User.findOne({ name: username });
+    const saved_user = await User.find({ name: username });
     console.log("saved_user: ", saved_user);
 
-    if (saved_user) {
-      setError("User Already exists. Try another user name");
-      return;
-    }
+    // if (saved_user) {
+    //   setError("User Already exists. Try another user name");
+    //   return;
+    // }
   };
 
   const handleUsername = (e) => {
@@ -22,10 +22,10 @@ const Username = ({ username, setUsername }) => {
     setUsername(user);
   };
   const handleClick = (e) => {
-    e.preventDefault()
-    console.log('onclick', username)
+    e.preventDefault();
+    console.log("onclick", username);
 
-    validateUser()
+    validateUser();
   };
 
   return (

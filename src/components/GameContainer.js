@@ -63,7 +63,7 @@ export default function GameContainer({ username, highScore, setHighScore }) {
         body: JSON.stringify({ id: city.id }),
       });
       const data = await response.json();
-    //   console.log("fdata", data);
+      //   console.log("fdata", data);
 
       setOptions(randomizeOptions([...data, city.city]));
     } catch (error) {
@@ -168,10 +168,11 @@ export default function GameContainer({ username, highScore, setHighScore }) {
           <span className="text-green-600 font-bold">✓ {score.correct}</span> |
           <span className="text-red-600 font-bold"> ✗ {score.incorrect}</span>
         </div>
-        <div className="flex items-center justify-center gap-1">
+        {/* <div className="flex items-center justify-center gap-1">
           <Timer className="w-5 h-5" />
-          <p>12:20</p>
-        </div>
+          <p>00:00
+          </p>
+        </div> */}
 
         <div>
           <span className="font-bold">High Score:</span> {highScore}
@@ -219,14 +220,25 @@ export default function GameContainer({ username, highScore, setHighScore }) {
       <div className="px-6 py-4 flex flex-col justify-center items-center">
         <div className="mb-4 w-full">
           <h2 className="text-xl font-bold mb-2">Where am I?</h2>
-          <div className="bg-gray-400 p-4 rounded-lg">
-            {destination.clues.map((clue, index) => (
-              <div key={index} className="mb-2">
-                <span className="font-bold">Clue {index + 1}: </span>
-                <span className="">{clue}</span>
-              </div>
-            ))}
-          </div>
+          {isCorrect ? (
+            <div className="bg-green-100 p-4 rounded-lg">
+              {destination.trivia.map((triv, index) => (
+                <div key={index} className="mb-2">
+                  <span className="font-bold">Trivia {index + 1}: </span>
+                  <span className="">{triv}</span>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="bg-gray-400 p-4 rounded-lg">
+              {destination.clues.map((clue, index) => (
+                <div key={index} className="mb-2">
+                  <span className="font-bold">Clue {index + 1}: </span>
+                  <span className="">{clue}</span>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         <div className="mb-4 w-full">
