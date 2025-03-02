@@ -1,9 +1,27 @@
+"use client";
+
 import GameContainer from "@/components/GameContainer";
+import Header from "@/components/Header";
+import Username from "@/components/Username";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [username, setUsername] = useState("Traveller");
+  const [highScore, setHighScore] = useState(0);
+  const [isValidUsername, setIsValidUsername] = useState(true);
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <GameContainer />
-    </div>
+    <main className="flex flex-col items-center justify-center">
+      <Header />
+      {isValidUsername ? (
+        <GameContainer
+          username={username}
+          highScore={highScore}
+          setHighScore={setHighScore}
+        />
+      ) : (
+        <Username username={username} setUsername={setUsername} setHi />
+      )}
+    </main>
   );
 }
