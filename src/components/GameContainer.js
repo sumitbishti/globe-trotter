@@ -63,7 +63,7 @@ export default function GameContainer({ username, highScore, setHighScore }) {
         body: JSON.stringify({ id: city.id }),
       });
       const data = await response.json();
-      console.log("fdata", data);
+    //   console.log("fdata", data);
 
       setOptions(randomizeOptions([...data, city.city]));
     } catch (error) {
@@ -75,7 +75,7 @@ export default function GameContainer({ username, highScore, setHighScore }) {
 
   const handleSubmit = () => {
     if (!selectedOption) return;
-    console.log("selectedOption", selectedOption);
+    // console.log("selectedOption", selectedOption);
 
     const correct = selectedOption === destination.city;
     setIsCorrect(correct);
